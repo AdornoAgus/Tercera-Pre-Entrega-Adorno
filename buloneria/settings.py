@@ -55,7 +55,7 @@ ROOT_URLCONF = 'buloneria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["C:/Users/Admin/Desktop/bulonera_agustin/buloneria/GitHubBulo/mi_buloneria/template"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
