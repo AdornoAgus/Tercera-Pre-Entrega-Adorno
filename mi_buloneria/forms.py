@@ -1,6 +1,6 @@
 from django import forms
 #f
-class form_Cliente(forms.Form):
+class Form_Cliente(forms.Form):
     nombre = forms.CharField(max_length=200)
     mail = forms.EmailField()
     
