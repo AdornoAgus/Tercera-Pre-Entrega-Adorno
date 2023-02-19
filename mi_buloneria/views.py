@@ -65,7 +65,18 @@ def deposito_(request):
        mi_formulario=Form_Deposito()
        
     return render(request, "deposito.html", {"mi_formulario":mi_formulario})
+
+def buscar(request):
+    if request.GET["marca"]:
+        marca = request.GET['marca']
+        depo_= Deposito.objects.filter(marca__icontains= marca)
+        return render(request, "resultadodepo.html", {"item":depo_ , "marca":marca})
         
+    else:
+        respuesta = "No enviaste datos" 
+
+    
+    return HttpResponse(respuesta)        
     
 
 
