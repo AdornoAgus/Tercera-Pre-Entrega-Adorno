@@ -6,9 +6,6 @@ from mi_buloneria.forms import *
 
 # Create your views here.
 
-#def inicio(request):
-#    return render(request, 'template/inicio.html')
-
 def inicio(self):
     miHtml=open("mi_buloneria/template/inicio.html")
     plantilla= Template(miHtml.read())
@@ -67,8 +64,9 @@ def deposito_(request):
     return render(request, "deposito.html", {"mi_formulario":mi_formulario})
 
 def buscar(request):
-    if request.GET["marca"]:
-        marca = request.GET['marca']
+    busca=open("buscador.html")
+    marca = request.GET['marca']
+    if marca:
         depo_= Deposito.objects.filter(marca__icontains= marca)
         return render(request, "resultadodepo.html", {"item":depo_ , "marca":marca})
         

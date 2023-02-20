@@ -25,7 +25,7 @@ class Deposito(models.Model):
     marca = models.CharField(max_length=200)
     
     def __str__(self):
-        return f"Se han guardado {self.item} del item {self.item} ha sido registrado dentro de la base de datos" 
+        return f"Se han guardado {self.cantidad} del item: {self.item} " 
 
 
 

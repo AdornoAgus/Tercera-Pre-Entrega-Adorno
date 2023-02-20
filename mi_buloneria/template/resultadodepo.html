@@ -1,4 +1,7 @@
 
+{% extends "padre.html" %}
+    {% load static %}
+{% block contenido %}
 
 
 <p>Estamos buscando item de la marca: {{marca}}</p>
@@ -21,3 +24,4 @@
 
 <p style="color: red;">{{respuesta}}</p>
 
+{% endblock %}
