@@ -64,7 +64,6 @@ def deposito_(request):
     return render(request, "deposito.html", {"mi_formulario":mi_formulario})
 
 def buscar(request):
-    busca=open("buscador.html")
     marca = request.GET['marca']
     if marca:
         depo_= Deposito.objects.filter(marca__icontains= marca)
