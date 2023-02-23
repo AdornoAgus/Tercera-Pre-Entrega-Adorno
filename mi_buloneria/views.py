@@ -1,17 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.template import Template, Context
+from django.template import Template, Context, loader
 from mi_buloneria.models import *
 from mi_buloneria.forms import *
 
 # Create your views here.
 
-def inicio(self):
+def inicio(request):
     miHtml=open("mi_buloneria/template/inicio.html")
     plantilla= Template(miHtml.read())
     miHtml.close()
     miContexto=Context()
     documento = plantilla.render(miContexto)
+
+    if request.GET:
+        variable = request.GET['marca']
+        depo_= Deposito.objects.filter(marca__icontains= variable)
+        contexto = {"referencia":depo_}
+        plantilla = loader.get_template("inicio.html")
+        documento = plantilla.render(contexto)
+        return HttpResponse(documento)   
     return HttpResponse(documento)
 
 def cliente(request):
@@ -63,17 +71,10 @@ def deposito_(request):
        
     return render(request, "deposito.html", {"mi_formulario":mi_formulario})
 
-def buscar(request):
-    marca = request.GET['marca']
-    if marca:
-        depo_= Deposito.objects.filter(marca__icontains= marca)
-        return render(request, "resultadodepo.html", {"item":depo_ , "marca":marca})
-        
-    else:
-        respuesta = "No enviaste datos" 
+
 
     
-    return HttpResponse(respuesta)        
+           
     
 
 

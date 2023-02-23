@@ -11,8 +11,16 @@
         <input type="submit" value="Buscar">
         
        </form>
-    
+       
+       {% if referencia %}
+         <ul>
+           {% for depo1 in referencia %}
+               <li> {{depo1.item}}</li>
+               <li> {{depo1.cantidad}}</li>
+               <li> {{depo1.marca}}</li>
+           {% endfor %}
 
-
-
-      {% endblock %}
+         </ul>
+       {% endif %}
+      
+      {% endblock %} 
