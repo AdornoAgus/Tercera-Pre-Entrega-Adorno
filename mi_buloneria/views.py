@@ -7,19 +7,13 @@ from mi_buloneria.forms import *
 # Create your views here.
 
 def inicio(request):
-    miHtml=open("mi_buloneria/templates/inicio.html")
-    plantilla= Template(miHtml.read())
-    miHtml.close()
-    miContexto=Context()
-    documento = plantilla.render(miContexto)
-
     if request.GET:
         variable = request.GET['marca']
         depo_= Deposito.objects.filter(marca__icontains= variable)
         contexto = {"referencia":depo_}
         return render(request, "inicio.html", contexto)
     
-    return HttpResponse(documento)
+    return render(request, "inicio.html",{})
 
 def cliente(request):
     if request.method == 'POST':
