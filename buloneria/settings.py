@@ -55,7 +55,7 @@ ROOT_URLCONF = 'buloneria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["C:/Users/Admin/Documents/GitHub/Tercera-Pre-Entrega-Adorno/mi_buloneria/template"],
+        'DIRS': ["C:/Users/Admin/Documents/GitHub/Tercera-Pre-Entrega-Adorno/mi_buloneria/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
