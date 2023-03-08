@@ -11,13 +11,19 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 def inicio(request):
     if request.GET:
         variable = request.GET['marca']
+
         depo_= Deposito.objects.filter(marca__icontains= variable)
-        contexto = {"referencia":depo_}
-        return render(request, "inicio.html", contexto)
-    else:
-        return render(request, "inicio.html", {"mensaje": "No hay Estudios de esa carrera"})
+        todos= Deposito.objects.all()
+        if depo_ in todos:
+            contexto = {"referencia":depo_}
+        else:
+            contexto = {"referencia":depo_, "mensaje": "No existe esa descripción"}
+        
+        return render(request, "inicio.html",contexto)
+       
+
     
-    #return render(request, "inicio.html",{})
+    return render(request, "inicio.html",{})
 
 def cliente(request):
     if request.method == 'POST':

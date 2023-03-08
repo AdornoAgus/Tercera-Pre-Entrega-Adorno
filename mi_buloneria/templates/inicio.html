@@ -20,15 +20,14 @@
                <li> {{depo1.marca}}</li>
            {% endfor %}
 
-
+       
          </ul>
-       {% else %}
+       {% endif %}
+
           {% if mensaje %}
           <h2>{{ mensaje }}</h2>
 
-          {% else %}
-          <p></p>
           {% endif %}
-       {% endif %}
+       
       
       {% endblock %} 
