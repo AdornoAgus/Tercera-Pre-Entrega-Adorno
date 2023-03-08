@@ -17,7 +17,7 @@
         
     {% endif %}
         
-    <form action="/cliente/" method="POST">{% csrf_token %}
+    <form action="{% url 'cliente' %}" method="POST">{% csrf_token %}
 
         <!-- aca esta la magia-->
         

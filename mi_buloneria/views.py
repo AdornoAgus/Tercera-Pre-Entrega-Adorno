@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Template, Context, loader
-from mi_buloneria.models import *
-from mi_buloneria.forms import *
-
+from .models import *
+from .forms import *
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 # Create your views here.
 
 def inicio(request):
@@ -12,8 +14,10 @@ def inicio(request):
         depo_= Deposito.objects.filter(marca__icontains= variable)
         contexto = {"referencia":depo_}
         return render(request, "inicio.html", contexto)
+    else:
+        return render(request, "inicio.html", {"mensaje": "No hay Estudios de esa carrera"})
     
-    return render(request, "inicio.html",{})
+    #return render(request, "inicio.html",{})
 
 def cliente(request):
     if request.method == 'POST':
@@ -22,7 +26,7 @@ def cliente(request):
         
         if mi_formulario.is_valid:
             informacion = mi_formulario.cleaned_data
-            cliente_ = Cliente(nombre=informacion['nombre'], email=informacion['mail'])
+            cliente_ = Cliente(nombre=informacion['nombre'], mail=informacion['mail'])
             cliente_.save()
             return render(request, "inicio.html")
         

@@ -20,9 +20,15 @@
                <li> {{depo1.marca}}</li>
            {% endfor %}
 
+
          </ul>
        {% else %}
-         <p>No hay datos con esa descripción.</p>
+          {% if mensaje %}
+          <h2>{{ mensaje }}</h2>
+
+          {% else %}
+          <p></p>
+          {% endif %}
        {% endif %}
       
       {% endblock %} 
